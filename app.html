@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PromptPilot App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container row between center py-lg">
+      <div class="brand">🚀 PromptPilot</div>
+      <div class="row gap-md center">
+        <span id="planBadge" class="badge">Free Plan</span>
+        <a class="btn btn-secondary" href="index.html">Back Home</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h1>Prompt Builder</h1>
+        <p class="muted">Free users can generate up to 3 prompts/day. Upgrade to Pro for unlimited usage.</p>
+
+        <label>Goal</label>
+        <input id="goal" placeholder="e.g. Write a SaaS landing page hero" />
+
+        <label>Audience</label>
+        <input id="audience" placeholder="e.g. CTOs at B2B startups" />
+
+        <label>Tone</label>
+        <input id="tone" placeholder="e.g. Direct, technical" />
+
+        <div class="row gap-md wrap py-md">
+          <button id="generateBtn" class="btn">Generate Prompt</button>
+          <a id="upgradeBtn" class="btn btn-secondary hidden" href="checkout.html?plan=pro-monthly">Upgrade to Pro</a>
+        </div>
+
+        <p class="muted" id="usageText"></p>
+        <pre id="output" class="output">Your optimized prompt will appear here.</pre>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

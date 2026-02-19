@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PromptPilot Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container py-lg">
+      <section class="card checkout">
+        <p class="badge">Polar-style Checkout (Demo)</p>
+        <h1>Complete your Pro subscription</h1>
+        <p class="muted">Plan: <strong id="planName">Pro Monthly</strong> — $19/month</p>
+
+        <label>Email</label>
+        <input id="email" type="email" placeholder="you@startup.com" />
+
+        <label>Card (demo)</label>
+        <input value="4242 4242 4242 4242" />
+
+        <div class="row gap-md wrap py-md">
+          <button id="completeCheckout" class="btn">Complete Checkout</button>
+          <a class="btn btn-secondary" href="index.html">Cancel</a>
+        </div>
+
+        <p class="muted">After successful checkout, your account is marked as Pro in this MVP demo.</p>
+      </section>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get('plan') || 'pro-monthly';
+      document.getElementById('planName').textContent =
+        plan === 'pro-yearly' ? 'Pro Yearly — $190/year' : 'Pro Monthly — $19/month';
+
+      document.getElementById('completeCheckout').addEventListener('click', () => {
+        const email = document.getElementById('email').value.trim();
+        if (!email) {
+          alert('Please provide an email.');
+          return;
+        }
+
+        localStorage.setItem('pp_subscription', 'pro');
+        localStorage.setItem('pp_email', email);
+        localStorage.setItem('pp_plan', plan);
+        window.location.href = 'app.html?checkout=success';
+      });
+    </script>
+  </body>
+</html>
